@@ -4,8 +4,12 @@
  */
 
 // Core variables and mixins
-//@import "../../bootstrap/less/variables.less";
+@import "../../bootstrap/less/variables.less";
 @import "../../bootstrap/less/mixins.less";
+
+// Extension variables and code
+@import "extensions/variables.less";
+@import "extensions/footer.less";
 
 // Theme variables and mixins
 @import "variables.less";
@@ -13,14 +17,138 @@
 
 
 // Global Components
-html,
-body {
-	height: 100%;
-	width: 100%;
+
+html {
+	position: relative;
+	min-height: 100%;
 }
 
 body {
 	font-family: @theme-sans-serif;
+	background-color: @theme-bg;
 }
 
 
+// Logo
+
+.theme-logo {
+	display: inline-block;
+	width: @theme-logo-width;
+	height: @theme-logo-height;
+	background-image: data-uri(@theme-logo);
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+
+
+// Navigation
+
+.navbar-default {
+	background-color: @theme-navbar-bg;
+	border-color: @theme-navbar-border;
+	#gradient.vertical(@theme-navbar-bg, @theme-navbar-bg-light);
+	margin-bottom: 0;
+
+	.navbar-header .navbar-brand {
+		color: @theme-primary;
+		font-weight: 600;
+		text-transform: uppercase;
+		&:hover,
+		&:focus {
+			color: darken(@theme-primary, 10%);
+		}
+
+		> .navbar-logo {
+			margin-top: -@navbar-padding-vertical;
+			margin-bottom: -@navbar-padding-vertical;
+			line-height: @navbar-height;
+		}
+
+		> img.navbar-logo {
+			display: inline-block;
+		}
+
+	}
+
+	.nav {
+		> li {
+			> a,
+			> a:focus {
+				color: @theme-gray;
+				font-size: 15px;
+				font-weight: 500;
+				text-transform: uppercase;
+
+				&:hover {
+					color: @theme-primary;
+				}
+				//> .glyphicon {
+					//font-size: 18px;
+					//vertical-align: middle;
+				//}
+			}
+			&.active {
+				> a,
+				> a:focus {
+					color: @theme-primary !important;
+					background-color: transparent;
+					&:hover {
+						background-color: transparent;
+					}
+				}
+			}
+		}
+
+/*
+		> li:before {
+			content: " ";
+			position: relative;
+			display: block;
+			float: left;
+			//line-height: @navbar-height;
+			width: 20px;
+			height: 50px;
+			margin-right: 20px;
+		}
+*/
+
+	}
+}
+
+.authors {
+	height: 600px;
+}
+
+
+// Footer
+
+.footer-default {
+	background-color: @theme-footer-bg;
+	border-color: @theme-footer-border;
+	#gradient.vertical(@theme-footer-bg-light, @theme-footer-bg);
+	margin-top: 0;
+
+	.footer-copyright {
+		color: @theme-primary;
+		font-size: 13px;
+
+		> a {
+			color: @theme-primary;
+
+			&:hover,
+			&:focus {
+				color: darken(@theme-primary, 10%);
+			}
+		}
+	}
+}
+
+body {
+	&.include-footer {
+		margin-bottom: @footer-height * 2;
+
+		@media (min-width: @grid-float-breakpoint) {
+			margin-bottom: @footer-height;
+		}
+	}
+}

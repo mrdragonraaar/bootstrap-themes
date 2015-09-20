@@ -1,0 +1,117 @@
+//
+// Footer
+// --------------------------------------------------
+
+// Add 'include-footer' class to body tag
+body {
+	&.include-footer {
+		margin-bottom: (@footer-height * 2) + @footer-margin-top;
+
+		@media (min-width: @grid-float-breakpoint) {
+			margin-bottom: @footer-height + @footer-margin-top;
+		}
+	}
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+
+	// Mirror navbar-static-top
+	z-index: @zindex-footer;
+	min-height: @footer-height;
+	margin-top: @footer-margin-top;
+	border-top: 1px solid transparent;
+	border-radius: 0px;
+
+	// Prevent floats from breaking the footer
+	&:extend(.clearfix all);
+
+	& > .container,
+	& > .container-fluid {
+		> .footer-copyright,
+		> .footer-links {
+			margin-left: -@footer-padding-horizontal;
+			margin-right: -@footer-padding-horizontal;
+
+			@media (min-width: @grid-float-breakpoint) {
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+.footer-copyright {
+	display: block;
+	height: @footer-height;
+	font-size: @font-size-small;
+	line-height: @line-height-computed;
+	margin: 0;
+	padding: @footer-padding-vertical @footer-padding-horizontal;
+
+	&:extend(.clearfix all);
+
+	@media (min-width: @grid-float-breakpoint) {
+		float: left;
+
+		.footer > .container &,
+		.footer > .container-fluid & {
+			margin-left: -@footer-padding-horizontal;
+		}
+	}
+}
+
+.footer-links {
+	display: block;
+	height: @footer-height;
+	font-size: @font-size-small;
+	line-height: @line-height-computed;
+	margin: 0;
+	padding: @footer-padding-vertical @footer-padding-horizontal;
+
+	&:extend(.clearfix all);
+
+	@media (min-width: @grid-float-breakpoint) {
+		float: right;
+
+		.footer > .container &,
+		.footer > .container-fluid & {
+			margin-right: -@footer-padding-horizontal;
+		}
+	}
+}
+
+.footer-default {
+	color: @footer-default-color;
+	background-color: @footer-default-bg;
+	border-color: @footer-default-border;
+
+	.footer-copyright {
+		color: @footer-default-color;
+
+		> a {
+			color: @footer-default-link-color;
+
+			&:hover,
+			&:focus {
+				color: @footer-default-link-hover-color;
+			}
+		}
+	}
+
+	.footer-links {
+		color: @footer-default-color;
+
+		> a {
+			color: @footer-default-link-color;
+
+			&:hover,
+			&:focus {
+				color: @footer-default-link-hover-color;
+			}
+		}
+	}
+}
+
