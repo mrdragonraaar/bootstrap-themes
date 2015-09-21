@@ -15,6 +15,8 @@
 @import "variables.less";
 @import "mixins.less";
 
+@import "fonts.less";
+
 
 // Global Components
 
@@ -49,10 +51,11 @@ body {
 	#gradient.vertical(@theme-navbar-bg, @theme-navbar-bg-light);
 	margin-bottom: 0;
 
-	.navbar-header .navbar-brand {
+	.navbar-brand {
 		color: @theme-primary;
 		font-weight: 600;
 		text-transform: uppercase;
+
 		&:hover,
 		&:focus {
 			color: darken(@theme-primary, 10%);
@@ -68,50 +71,92 @@ body {
 			display: inline-block;
 		}
 
+		@media (min-width: @grid-float-breakpoint) {
+			padding-right: @theme-navbar-divider-padding;
+		}
 	}
 
-	.nav {
-		> li {
-			> a,
-			> a:focus {
-				color: @theme-gray;
-				font-size: 15px;
-				font-weight: 500;
-				text-transform: uppercase;
+	.navbar-nav {
+		margin-top: 0;
+		margin-bottom: 0;
 
-				&:hover {
-					color: @theme-primary;
-				}
-				//> .glyphicon {
-					//font-size: 18px;
-					//vertical-align: middle;
-				//}
+		> li > a {
+			color: @theme-gray;
+			font-weight: 500;
+			text-transform: uppercase;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+
+			// keep height when collapsed
+			height: @navbar-height;
+			padding-top: @navbar-padding-vertical;
+			padding-bottom: @navbar-padding-vertical;
+
+			&:hover,
+			&:focus {
+				color: @theme-primary;
 			}
-			&.active {
-				> a,
-				> a:focus {
-					color: @theme-primary !important;
-					background-color: transparent;
-					&:hover {
-						background-color: transparent;
-					}
-				}
+
+			> .glyphicon {
+				top: -1px;
+				font-size: 18px;
+				vertical-align: middle;
+				margin-right: 5px;
 			}
 		}
 
-/*
-		> li:before {
-			content: " ";
-			position: relative;
-			display: block;
-			float: left;
-			//line-height: @navbar-height;
-			width: 20px;
-			height: 50px;
-			margin-right: 20px;
+		> .active > a {
+			&,
+			&:hover,
+			&:focus {
+				color: @theme-primary !important;
+				background-color: transparent;
+			}
 		}
-*/
 
+		// add divider when not collapsed
+		@media (min-width: @grid-float-breakpoint) {
+			> li > a {
+				margin-left: @theme-navbar-divider-width;
+				padding-left: @theme-navbar-divider-padding;
+				padding-right: @theme-navbar-divider-padding;
+			}
+
+			> li:before {
+				content: " ";
+				position: relative;
+				display: block;
+				float: left;
+				background-image: data-uri(@theme-navbar-divider);
+				background-repeat: no-repeat;
+				width: @theme-navbar-divider-width;
+				height: @theme-navbar-divider-height;
+			}
+		}
+	}
+
+	.navbar-toggle {
+		border-color: @theme-navbar-border;
+		background-color: lighten(@theme-navbar-bg, 10%);
+
+		.icon-bar {
+			background-color: @theme-gray;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: @theme-navbar-bg-light;
+
+			.icon-bar {
+				background-color: @theme-primary;
+			}
+		}
+	}
+
+	.navbar-collapse {
+		border-top: 0;
+		.box-shadow(none);
 	}
 }
 
@@ -129,15 +174,14 @@ body {
 	margin-top: 0;
 
 	.footer-copyright {
-		color: @theme-primary;
-		font-size: 13px;
+		color: @theme-gray;
 
 		> a {
-			color: @theme-primary;
+			color: @theme-gray;
 
 			&:hover,
 			&:focus {
-				color: darken(@theme-primary, 10%);
+				color: darken(@theme-gray, 10%);
 			}
 		}
 	}
