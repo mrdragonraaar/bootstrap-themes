@@ -173,7 +173,6 @@ body {
   background-image: linear-gradient(to bottom, #c8c6b0 0%, #e1ddc7 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc8c6b0', endColorstr='#ffe1ddc7', GradientType=0);
-  margin-bottom: 0;
 }
 .navbar-default .navbar-brand {
   color: #382110;
@@ -265,9 +264,6 @@ body {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.authors {
-  height: 600px;
-}
 .footer-default {
   background-color: #c8c6b0;
   border-color: #bebba1;
@@ -288,11 +284,55 @@ body {
 .footer-default .footer-copyright > a:focus {
   color: #5e5e5e;
 }
-body.include-footer {
-  margin-bottom: 100px;
-}
 @media (min-width: 768px) {
-  body.include-footer {
-    margin-bottom: 50px;
-  }
+  
+}
+#series {
+  background-color: #efede2;
+  color: #777777;
+  border-color: #bebba1;
+  background-image: -webkit-linear-gradient(top, #c8c6b0 0%, #e1ddc7 100%);
+  background-image: -o-linear-gradient(top, #c8c6b0 0%, #e1ddc7 100%);
+  background-image: linear-gradient(to bottom, #c8c6b0 0%, #e1ddc7 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc8c6b0', endColorstr='#ffe1ddc7', GradientType=0);
+}
+#series > h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  font-family: "Poiret one", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  color: #382110;
+  border-bottom: 1px solid #eeeeee;
+}
+#series > div {
+  margin-bottom: 10px;
+  height: 75px;
+  max-height: 75px;
+}
+#series .series-info {
+  display: block;
+  float: left;
+  white-space: nowrap;
+  width: 150px;
+  width: 40%;
+}
+#series .series-info > h5 {
+  color: #666600;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+#series .series-info > p {
+  color: #777777;
+}
+#series .series-covers {
+  display: block;
+  float: right;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 60%;
+}
+#series .series-covers > img {
+  width: 48px;
+  height: 75px;
 }
