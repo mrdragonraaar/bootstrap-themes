@@ -1,0 +1,16 @@
+//
+// Font Face
+// --------------------------------------------------
+
+.font-face(@family, @style, @weight, @path, @file) {
+	@font-face {
+		font-family: @family;
+		font-style: @style;
+		font-weight: @weight;
+		src: url('@{path}@{file}.eot?#iefix') format('embedded-opentype'),
+		     url('@{path}@{file}.woff') format('woff'),
+		     url('@{path}@{file}.ttf') format('truetype'),
+		     url('@{path}@{file}.svg#@{file}') format('svg');
+	}
+}
+
