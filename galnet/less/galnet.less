@@ -1,0 +1,247 @@
+/*!
+ * Elite: Dangerous Bootstrap Theme v3.3.5
+ * Copyright 2015 mrdragonraaar.com
+ */
+
+
+//
+// Core variables and mixins
+// --------------------------------------------------
+
+@import "../../bootstrap/less/variables.less";
+@import "../../bootstrap/less/mixins.less";
+
+
+//
+// Theme fonts and variables
+// --------------------------------------------------
+
+@import "variables.less";
+@import "fonts.less";
+
+
+//
+// Mixins
+// --------------------------------------------------
+
+#border-gradient {
+	.directional(@start-color: #555; @end-color: #333; @deg: 45deg) {
+		-webkit-border-image: -webkit-linear-gradient(@deg, @start-color, @end-color); // Safari 3.1-5
+		-o-border-image: -o-linear-gradient(@deg, @start-color, @end-color); // Opera 11-12.1
+		border-image: linear-gradient(@deg, @start-color, @end-color);
+		border-image-slice: 1;
+	}
+}
+
+
+//
+// Global Components
+// --------------------------------------------------
+
+body {
+	font-family: @theme-sans-serif;
+	color: @theme-text;
+	background-color: @theme-bg;
+}
+
+a,
+.btn-link {
+	color: @theme-link;
+
+	&:hover,
+	&:focus {
+		color: @theme-link-hover;
+		text-decoration: @theme-link-hover-decoration;
+	}
+}
+
+
+//
+// Buttons
+// --------------------------------------------------
+
+.btn {
+	border-color: transparent;
+	background-color: transparent;
+	border-radius: 0px;
+
+	&:hover,
+	&:focus,
+	&.focus {
+		border-color: transparent;
+		background-color: transparent;
+	}
+
+	&:active,
+	&.active,
+	.open > .dropdown-toggle& {
+		border-color: transparent;
+		background-color: transparent;
+
+		&:hover,
+		&:focus,
+		&.focus {
+			border-color: transparent;
+			background-color: transparent;
+		}
+	}
+
+	&.disabled,
+	a[disabled],
+	fieldset[disabled] & {
+		border-color: transparent;
+		background-color: transparent;
+		opacity: 1;
+
+		&:hover,
+		&:focus,
+		&.focus {
+			border-color: transparent;
+			background-color: transparent;
+		}
+	}
+}
+
+.btn-styles(@btn-color) {
+	color: @btn-color;
+	text-shadow: 0px 0px 1px spin(lighten(@btn-color, 4%), -2);
+
+	#border-gradient > .directional(spin(desaturate(darken(@btn-color, 46%), 36%), -29), spin(desaturate(darken(@btn-color, 47%), 36%), -18), 125deg);
+	#gradient > .directional(spin(desaturate(darken(@btn-color, 45%), 29%), -28), spin(desaturate(darken(@btn-color, 46%), 29%), -23), 125deg);
+
+	.box-shadow(-1px -1px 2px 0 spin(desaturate(darken(@btn-color, 47%), 57%), -31));
+
+	&:hover,
+	&:focus,
+	&.focus,
+	&:active,
+	&.active,
+	.open > .dropdown-toggle& {
+		color: spin(desaturate(darken(@btn-color, 46%), 29%), -23);
+		text-shadow: 0px 0px 1px spin(darken(@btn-color, 10%), -9);
+
+		#border-gradient > .directional(spin(lighten(@btn-color, 4%), -2), spin(darken(@btn-color, 10%), -9), 125deg);
+		#gradient > .directional(spin(lighten(@btn-color, 4%), 4), @btn-color, 125deg);
+
+		.box-shadow(-1px -1px 2px 0 spin(desaturate(darken(@btn-color, 39%), 87%), -5));
+	}
+
+	&:active,
+	&.active,
+	.open > .dropdown-toggle& {
+		&:hover,
+		&:focus,
+		&.focus {
+			color: spin(desaturate(darken(@btn-color, 46%), 29%), -23);
+		}
+	}
+
+	&.disabled,
+	a[disabled],
+	fieldset[disabled] & {
+		color: @theme-danger;
+		text-shadow: 0px 0px 1px spin(lighten(@theme-danger, 4%), -2);
+
+		#border-gradient > .directional(spin(desaturate(darken(@btn-color, 46%), 36%), -29), spin(desaturate(darken(@btn-color, 47%), 36%), -18), 125deg);
+		#gradient > .directional(spin(desaturate(darken(@btn-color, 45%), 29%), -28), spin(desaturate(darken(@btn-color, 46%), 29%), -23), 125deg);
+
+		.box-shadow(-1px -1px 2px 0 spin(desaturate(darken(@btn-color, 47%), 57%), -31));
+
+		&:hover,
+		&:focus,
+		&.focus {
+			color: @theme-danger;
+		}
+	}
+}
+
+.btn-default { .btn-styles(#555); }
+.btn-primary { .btn-styles(@theme-primary); }
+.btn-success { .btn-styles(@theme-success); }
+.btn-info { .btn-styles(@theme-info); }
+.btn-warning { .btn-styles(@theme-warning); }
+.btn-danger { .btn-styles(@theme-danger); }
+
+
+//
+// List groups
+// --------------------------------------------------
+
+.list-group {
+}
+
+.list-group-item {
+	border-color: transparent;
+	background-color: transparent;
+	margin-bottom: 5px;
+
+	&:first-child,
+	&:last-child {
+		border-radius: 0px;
+	}
+
+	a&,
+	button& {
+		&:hover,
+		&:focus {
+			border-color: transparent;
+			background-color: transparent;
+		}
+
+		&:active,
+		&.active,
+		&:active:hover,
+		&.active:hover,
+		&:active:focus,
+		&.active:focus {
+			border-color: transparent;
+			background-color: transparent;
+		}
+	}
+}
+
+.list-group-item-styles(@list-group-item-color) {
+	color: @list-group-item-color;
+	text-shadow: 0px 0px 1px spin(lighten(@list-group-item-color, 4%), -2);
+
+	#border-gradient > .directional(spin(desaturate(darken(@list-group-item-color, 46%), 36%), -29), spin(desaturate(darken(@list-group-item-color, 47%), 36%), -18), 125deg);
+	#gradient > .directional(spin(desaturate(darken(@list-group-item-color, 45%), 29%), -28), spin(desaturate(darken(@list-group-item-color, 46%), 29%), -23), 125deg);
+
+	.box-shadow(-1px -1px 2px 0 spin(desaturate(darken(@list-group-item-color, 47%), 57%), -31));
+
+	a&,
+	button& {
+		color: @list-group-item-color;
+
+		&:hover,
+		&:focus {
+			color: spin(desaturate(darken(@list-group-item-color, 46%), 29%), -23);
+			text-shadow: 0px 0px 1px spin(darken(@list-group-item-color, 10%), -9);
+
+			#border-gradient > .directional(spin(lighten(@list-group-item-color, 4%), -2), spin(darken(@list-group-item-color, 10%), -9), 125deg);
+			#gradient > .directional(spin(lighten(@list-group-item-color, 4%), 4), @list-group-item-color, 125deg);
+
+			.box-shadow(-1px -1px 2px 0 spin(desaturate(darken(@list-group-item-color, 39%), 87%), -5));
+		}
+
+		&:active,
+		&.active,
+		&:active:hover,
+		&.active:hover,
+		&:active:focus,
+		&.active:focus {
+			color: spin(desaturate(darken(@list-group-item-color, 46%), 29%), -23);
+			text-shadow: 0px 0px 1px spin(darken(@list-group-item-color, 10%), -9);
+
+			#border-gradient > .directional(spin(lighten(@list-group-item-color, 4%), -2), spin(darken(@list-group-item-color, 10%), -9), 125deg);
+			#gradient > .directional(spin(lighten(@list-group-item-color, 4%), 4), @list-group-item-color, 125deg);
+
+			.box-shadow(-1px -1px 2px 0 spin(desaturate(darken(@list-group-item-color, 39%), 87%), -5));
+		}
+	}
+}
+
+.list-group-item {
+	.list-group-item-styles(@theme-primary);
+}
+
